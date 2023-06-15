@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
@@ -16,12 +17,15 @@ import java.util.List;
 public interface PlaylistControllerOpenApi {
 
     @Operation(summary = "Cadastra uma playlist", description = "Cadastro de uma playlist com musicas")
+    @SecurityRequirement(name = "Bearer Authentication")
     OutputAddSongsPlaylistDto addSongsInPlaylist(InputAddSongsPlaylistDto input);
 
     @Operation(summary = "Lista as playlist")
+    @SecurityRequirement(name = "Bearer Authentication")
     List<OutputListSongsPlaylistDto> listSongsInPlaylist();
 
     @Operation(summary = "Lista as musicas por nome da playlist")
+    @SecurityRequirement(name = "Bearer Authentication")
     List<OutputListDescriptionPlaylistDto> listDescriptionSongsInPlaylist(String listName);
 
     @Operation(summary = "Excluir uma cidade por ID",responses = {
@@ -33,5 +37,6 @@ public interface PlaylistControllerOpenApi {
                     content = @Content(schema = @Schema(ref = "Problem"))
             )
     })
+    @SecurityRequirement(name = "Bearer Authentication")
     void removePlaylist(String listName);
 }

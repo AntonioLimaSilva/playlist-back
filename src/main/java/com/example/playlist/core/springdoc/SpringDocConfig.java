@@ -20,14 +20,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @SecurityScheme(
-        name = "bearerAuth",
+        name = "Bearer Authentication",
         type = SecuritySchemeType.HTTP,
         bearerFormat = "JWT",
         scheme = "bearer"
@@ -57,8 +57,9 @@ public class SpringDocConfig {
                 ).externalDocs(new ExternalDocumentation()
                         .description("PLAYLIST")
                         .url("https://playlist.com")
-                ).tags(Collections.singletonList(
-                        new Tag().name("Playlist").description("Gerencia uma playlist de musicas")
+                ).tags(List.of(
+                        new Tag().name("Playlist").description("Gerencia uma playlist de musicas"),
+                        new Tag().name("Authentication").description("Gerencia autenticacao do usuario")
                 )).components(new Components()
                         .schemas(gerarSchemas())
                         .responses(gerarResponses())

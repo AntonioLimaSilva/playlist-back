@@ -30,10 +30,15 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserService userService;
+
+    String[] caminhosPermitidos = new String[] {"/webjars/**", "/oauth/token", "/oauth/**","classpath:/META-INF/resources/webjars/", "/webjars/**",
+            "classpath:/META-INF/resources/", "/swagger-resources/**", "/swagger/**", "/swagger*/**", "/swagger-ui/**", "/v3/api-docs/**",
+            "/swagger-resources/configuration/security", "/swagger-resources/configuration/ui",
+            "/swagger-ui.html","/actuator/health", "/api/v1/auth/**" };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**")
+                .authorizeHttpRequests(request -> request.requestMatchers(caminhosPermitidos)
                         .permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
