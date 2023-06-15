@@ -1,0 +1,24 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+networks:
+  playlist-network:
+    driver: bridge
+
+services:
+
+  playlist-api:
+    image: luclimasilva23/playlist-back:0.1
+    ports:
+      - "8080:8080"
+    networks:
+      - playlist-network
+
+  playlist-front:
+    image: luclimasilva23/playlist-front:0.1
+    ports:
+      - "8000:80"
+    networks:
+      - playlist-network
+    depends_on:
+      - playlist-api
