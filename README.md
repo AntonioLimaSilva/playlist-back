@@ -15,4 +15,4 @@ docker build -t luclimasilva23/playlist-back:0.1 -f devops/Dockerfile .
 docker-compose up
 
 # ACESSAR FRONT
-http://localhost:8000/playlist
+http://localhost:8000/login
