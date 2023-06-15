@@ -8,6 +8,7 @@ OBS: docker compose esta no projeto back
 docker build -t luclimasilva23/playlist-front:0.1 -f devops/Dockerfile .
 
 # BUILD BACK
+mvn clean install
 
 docker build -t luclimasilva23/playlist-back:0.1 -f devops/Dockerfile .
 
