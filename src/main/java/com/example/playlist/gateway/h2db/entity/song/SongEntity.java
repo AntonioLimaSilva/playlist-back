@@ -38,7 +38,7 @@ public class SongEntity {
         song.setTitle(this.title);
         song.setArtist(this.artist);
         song.setYear(this.yearSong);
-        song.setGender(this.getGender());
+        song.setGender(this.gender);
 
         return song;
     }
