@@ -1,6 +1,5 @@
 package com.example.playlist.gateway.api.controller;
 
-import com.example.playlist.domain.Playlist;
 import com.example.playlist.gateway.api.controller.dto.InputAddSongsPlaylistDto;
 import com.example.playlist.gateway.api.controller.dto.OutputAddSongsPlaylistDto;
 import com.example.playlist.gateway.api.controller.dto.OutputListDescriptionPlaylistDto;
@@ -31,7 +30,7 @@ public class PlaylistController implements PlaylistControllerOpenApi {
     @Override
     public OutputAddSongsPlaylistDto addSongsInPlaylist(@RequestBody @Valid InputAddSongsPlaylistDto input) {
 
-        Playlist playlist = addUseCase.addSongsInPlaylist(input.toDomain());
+        var playlist = addUseCase.addSongsInPlaylist(input.toDomain());
 
         return new OutputAddSongsPlaylistDto(playlist);
     }
